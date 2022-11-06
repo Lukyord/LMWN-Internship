@@ -10,7 +10,7 @@ export default function TripList(props) {
           title={trip.title}
           photo1={trip.photos[0]}
           description={trip.description}
-          // tags={trip.tags}
+          tags={trip.tags}
         />
       ))}
     </ul>
