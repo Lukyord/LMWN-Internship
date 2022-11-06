@@ -1,17 +1,17 @@
 export default function TripItem(props) {
-  <li>
-    <div>
-      <img src={props.photos[0]} alt={props.title} />
-    </div>
-    <div>
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
+  return (
+    <li>
       <div>
-        <p>Category: {props.tags}</p>
+        <img src={props.photo1} alt={props.title} />
       </div>
-    </div>
-    <div>
-      <button>SEE MORE</button>
-    </div>
-  </li>;
+      <div>
+        <h3>{props.title}</h3>
+        <p>{props.description}</p>
+        <div>{/* <p>Category: {props.tags}</p> */}</div>
+      </div>
+      <div>
+        <button>SEE MORE</button>
+      </div>
+    </li>
+  );
 }

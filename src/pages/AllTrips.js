@@ -1,3 +1,5 @@
+import TripList from "../components/Trips/TripList";
+
 const DUMMY_DATA = [
   {
     title: "Koh Chang Travel, Guide Eat Travel Stay? All in one here!",
@@ -33,6 +35,7 @@ export default function AllTrips() {
   return (
     <section>
       <h1>All Trips</h1>
+      <TripList trips={DUMMY_DATA} />
     </section>
   );
 }
