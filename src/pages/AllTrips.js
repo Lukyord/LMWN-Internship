@@ -33,8 +33,8 @@ const DUMMY_DATA = [
 
 export default function AllTrips() {
   return (
-    <div className="content-center">
-      <h1 className="text-center text-5xl p-[1rem]">All Trips</h1>
+    <div className="content-center py-[3rem]">
+      <h1 className="text-center text-4xl">All Trips</h1>
       <TripList trips={DUMMY_DATA} />
     </div>
   );
