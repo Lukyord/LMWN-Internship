@@ -1,4 +1,5 @@
 import Card from "../ui/Card";
+import ReadMore from "../ui/ReadMore";
 
 export default function TripItem(props) {
   return (
@@ -13,13 +14,12 @@ export default function TripItem(props) {
         </div>
         <div className="text-center p-[1rem]">
           <h3 className="text-xl text-slate-500">{props.title}</h3>
-          <p>{props.description}</p>
+          <p>
+            <ReadMore>{props.description}</ReadMore>
+          </p>
           <div>
             <p>Category: {props.tags}</p>
           </div>
-        </div>
-        <div>
-          <button>SEE MORE</button>
         </div>
       </Card>
     </li>
