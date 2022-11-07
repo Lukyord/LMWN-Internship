@@ -4,7 +4,7 @@ export default function Layout(props) {
   return (
     <div>
       <MainNavigation />
-      <main className="my-[3rem] flex justify-center items-center">
+      <main className="py-[3rem] flex justify-center items-center bg-slate-100">
         {props.children}
       </main>
     </div>
