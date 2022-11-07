@@ -3,22 +3,31 @@ import ReadMore from "../ui/ReadMore";
 
 export default function TripItem(props) {
   return (
-    <li className="m-[1rem] max-w-2xl">
+    <li className="m-[2rem] max-w-7xl">
       <Card>
-        <div className="w-full h-[20rem] overflow-hidden rounded-tr-md rounded-tl-md">
-          <img
-            src={props.photo1}
-            alt={props.title}
-            className="w-full object-cover"
-          />
-        </div>
-        <div className="text-center p-[1rem]">
-          <h3 className="text-xl text-slate-500">{props.title}</h3>
-          <p>
-            <ReadMore>{props.description}</ReadMore>
-          </p>
-          <div>
-            <p>Category: {props.tags}</p>
+        <div className="grid grid-cols-10 grid-rows-4">
+          <div className="w-full overflow-hidden rounded-bl-md rounded-tl-md row-span-4 col-span-4">
+            <img src={props.photo1} alt={props.title} className="object-fill" />
+          </div>
+          <div className="text-center p-[1rem] col-span-6 row-span-2">
+            <h3 className="text-2xl text-slate-500 p-[0.5rem]">
+              {props.title}
+            </h3>
+            <p className="p-[0.5rem]">
+              <ReadMore>{props.description}</ReadMore>
+            </p>
+            <div>
+              <p>Category: {props.tags}</p>
+            </div>
+          </div>
+          <div className="object-cover overflow-hidden rounded-3xl rounded-b-[3rem] row-span-2 col-span-2 px-[0.5rem]">
+            <img src={props.photo2} alt={props.title} className="object-fill" />
+          </div>
+          <div className="object-cover overflow-hidden rounded-3xl rounded-b-[3rem] row-span-2 col-span-2 px-[0.5rem]">
+            <img src={props.photo3} alt={props.title} className="object-fill" />
+          </div>
+          <div className="object-cover overflow-hidden rounded-3xl rounded-b-[3rem] row-span-2 col-span-2 px-[0.5rem]">
+            <img src={props.photo4} alt={props.title} className="object-fill" />
           </div>
         </div>
       </Card>
