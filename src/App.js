@@ -11,7 +11,10 @@ export default function App() {
       <Routes>
         <Route path="/" exact element={<WhereWeGo />} />
         <Route path="/all-trips" element={<AllTrips />} />
-        <Route path="/search-trips" element={<SearchTrips />} />
+        <Route
+          path="/search-trips"
+          element={<SearchTrips placeholder="Find and Go..." />}
+        />
       </Routes>
     </Layout>
   );
