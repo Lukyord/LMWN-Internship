@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function WhereWeGo() {
   return (
-    <div className="flex-none content-center text-center pt-[5rem]">
+    <div className="flex-none content-center text-center pt-[5rem] h-screen w-screen bg-slate-100">
       <h1 className="text-8xl py-[5rem] font-bold italic text-slate-700">
         Looking for somewhere nice to go?
       </h1>
@@ -16,7 +16,7 @@ export default function WhereWeGo() {
           </button>
         </Link>
       </h1>
-      <div className="flex flex-row pt-[6rem] justify-between">
+      <div className="flex flex-row pt-[6rem] justify-around">
         <div className="object-cover overflow-hidden rounded-3xl w-[30rem]">
           <img
             src="https://img.wongnai.com/p/1600x0/2020/02/18/458b9a31b62b408d91137fbe152f7450.jpg"

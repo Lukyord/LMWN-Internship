@@ -4,9 +4,7 @@ export default function Layout(props) {
   return (
     <div>
       <MainNavigation />
-      <main className="h-screen w-screen flex justify-center bg-slate-100">
-        {props.children}
-      </main>
+      <main>{props.children}</main>
     </div>
   );
 }
