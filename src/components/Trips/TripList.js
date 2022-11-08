@@ -13,6 +13,7 @@ export default function TripList(props) {
           photo3={trip.photos[2]}
           photo4={trip.photos[3]}
           description={trip.description}
+          url={trip.url}
           tags={trip.tags}
         />
       ))}

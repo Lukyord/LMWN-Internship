@@ -18,22 +18,40 @@ export default function WhereWeGo() {
       </h1>
       <div className="flex flex-row pt-[6rem] justify-around">
         <div className="object-cover overflow-hidden rounded-3xl w-[30rem]">
-          <img
-            src="https://img.wongnai.com/p/1600x0/2020/02/18/458b9a31b62b408d91137fbe152f7450.jpg"
-            alt="somewhere nice"
-          />
+          <a
+            href="https://www.wongnai.com/trips/new-bts-route-trips"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.wongnai.com/p/1600x0/2020/02/18/458b9a31b62b408d91137fbe152f7450.jpg"
+              alt="somewhere nice"
+            />
+          </a>
         </div>
         <div className="object-cover overflow-hidden rounded-3xl w-[30rem]">
-          <img
-            src="https://img.wongnai.com/p/1600x0/2020/02/18/08bca1c784db4d7f92e93656b5376681.jpg"
-            alt="somewhere nice"
-          />
+          <a
+            href="https://www.wongnai.com/trips/new-bts-route-trips"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.wongnai.com/p/1600x0/2020/02/18/08bca1c784db4d7f92e93656b5376681.jpg"
+              alt="somewhere nice"
+            />
+          </a>
         </div>
         <div className="object-cover overflow-hidden rounded-3xl w-[30rem]">
-          <img
-            src="https://img.wongnai.com/p/1600x0/2020/02/18/95bd2ca371e24436bcb24d432a86836c.jpg"
-            alt="somewhere nice"
-          />
+          <a
+            href="https://www.wongnai.com/trips/new-bts-route-trips"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.wongnai.com/p/1600x0/2020/02/18/95bd2ca371e24436bcb24d432a86836c.jpg"
+              alt="somewhere nice"
+            />
+          </a>
         </div>
       </div>
     </div>
