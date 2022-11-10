@@ -23,6 +23,7 @@ export default function MainNavigation() {
             <Link
               to="/search-trips"
               className="mr-[7rem] hover:text-white active:text-white"
+              state={{ tag: ["Cafe"] }}
             >
               Search Trips
             </Link>

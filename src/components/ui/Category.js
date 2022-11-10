@@ -16,7 +16,12 @@ export default function Category(props) {
         {allExceptLast(props.tags).map((tag, index) => {
           return (
             <text>
-              <Link key={index} to="/search-trips" className="text-sky-400">
+              <Link
+                key={index}
+                to="/search-trips"
+                className="text-sky-400"
+                state={{ tag: [tag] }}
+              >
                 {tag}
               </Link>
               <text>, </text>
@@ -25,14 +30,13 @@ export default function Category(props) {
         })}
         {" and "}
         {
-          <a
-            href={props.url}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/search-trips"
             className="text-sky-400"
+            state={{ tag: [props.tags[props.tags.length - 1]] }}
           >
             {props.tags[props.tags.length - 1]}
-          </a>
+          </Link>
         }
       </p>
     </div>

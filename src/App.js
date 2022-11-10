@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/all-trips" element={<AllTrips />} />
         <Route
           path="/search-trips"
-          element={<SearchTrips placeholder="Find and Go..." />}
+          element={<SearchTrips placeholder="Find and Go..." x />}
         />
       </Routes>
     </Layout>
