@@ -14,6 +14,8 @@ export default function SearchTrips(props) {
     const searchText = event.target.value;
     setWordEntered(searchText);
 
+    // const newTrips = DummyData.trips.filter((trip) => trip.)
+
     const newFilter = DummyData.trips.filter((value) => {
       return value.title.toLowerCase().includes(searchText.toLowerCase());
     });
@@ -24,6 +26,7 @@ export default function SearchTrips(props) {
       setFilteredData(newFilter);
     }
 
+    console.log(newFilter);
     // const f = newFilter.map((subArray) =>
     //   subArray
     //     .filter((tag) => tag.toLowerCase().includes(enteredText.toLowerCase()))
@@ -96,8 +99,12 @@ export default function SearchTrips(props) {
             })}
           </div>
         )}
-        <div>
-          <TripList trips={DummyData} />
+        <div className="h-screen">
+          {filteredData.length === 0 && wordEntered !== 0 ? (
+            <TripList trips={DummyData.trips} />
+          ) : (
+            <TripList trips={filteredData} />
+          )}
         </div>
       </div>
     </div>

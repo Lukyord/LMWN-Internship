@@ -132,7 +132,7 @@ export default function AllTrips() {
     <div className="h-full w-screen flex justify-center bg-slate-100 content-center py-[3rem]">
       <div className="flex-col">
         <h1 className="text-center text-4xl">All Trips</h1>
-        <TripList trips={DUMMY_DATA} />
+        <TripList trips={DUMMY_DATA.trips} />
       </div>
     </div>
   );

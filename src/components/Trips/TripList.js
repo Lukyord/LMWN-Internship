@@ -3,7 +3,7 @@ import TripItem from "./TripItem";
 export default function TripList(props) {
   return (
     <ul>
-      {props.trips.trips.map((trip) => (
+      {props.trips.map((trip) => (
         <TripItem
           key={trip.eid}
           id={trip.eid}
