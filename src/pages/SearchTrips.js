@@ -3,7 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import TripList from "../components/Trips/TripList";
 import useSearchTag from "../components/ui/useSearchTag";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import DummyData from "../db-en.json";
 
@@ -12,25 +12,33 @@ export default function SearchTrips(props) {
   const [wordEntered, setWordEntered] = useState("");
   const { render, tags } = useSearchTag();
 
+  useEffect(() => {
+    let filteredTags = DummyData.trips.filter((trip) =>
+      trip.tags.some((tag) => tag.includes(tags))
+    );
+    setFilteredData(filteredTags);
+  }, [tags]);
+
   function handleFilter(event) {
     const searchText = event.target.value;
     setWordEntered(searchText);
 
     let filteredTags = DummyData.trips.filter((trip) =>
-      trip.tags.some((tag) => tag.includes(tags))
+      trip.tags.some((tag) => tag.includes(tags.toString()))
     );
     const newFilter = filteredTags.filter((value) => {
       return value.title.toLowerCase().includes(searchText.toLowerCase());
     });
 
     if (searchText === "") {
-      setFilteredData([]);
+      setFilteredData(filteredTags);
     } else {
       setFilteredData(newFilter);
     }
 
-    console.log(tags);
     console.log(filteredTags);
+    console.log(tags.toString());
+    console.log(newFilter);
   }
 
   function clearInput() {
@@ -44,7 +52,7 @@ export default function SearchTrips(props) {
   }
 
   return (
-    <div className="flex justify-center h-full pt-[3rem] bg-slate-100">
+    <div className="flex justify-center h-full min-h-screen pt-[3rem] bg-slate-100">
       <div className="flex-col">
         {render}
         <form onSubmit={submitHandler}>
@@ -69,7 +77,7 @@ export default function SearchTrips(props) {
             </div>
           </div>
         </form>
-        {filteredData.length !== 0 && (
+        {filteredData.length !== 0 && wordEntered.length !== 0 && (
           <div className="ml-[22rem] mt-[5px] w-[40rem] h-[200px] bg-white shadow-2xl overflow-hidden overflow-y-auto">
             {filteredData.map((value, key) => {
               return (

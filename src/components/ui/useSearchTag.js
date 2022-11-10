@@ -14,8 +14,12 @@ export default function useSearchTag(props) {
   }
 
   function addTags(event) {
-    if (event.key === "Enter" && event.target.value !== "") {
-      setTags([...tags, event.target.value]);
+    const enteredTag = event.target.value;
+    if (event.key === "Enter" && enteredTag !== "") {
+      setTags([
+        ...tags,
+        enteredTag.charAt(0).toUpperCase() + enteredTag.slice(1),
+      ]);
       event.target.value = "";
     }
   }
