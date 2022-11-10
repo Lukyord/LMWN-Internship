@@ -15,9 +15,17 @@ export default function ReadMore(props) {
       <button onClick={toggleButton} className="font-semibold text-sky-400">
         {" "}
         {isReadMoreShown ? (
-          <a href={props.url} target="_blank" rel="noopener noreferrer">
-            Go to Link
-          </a>
+          <text>
+            Read Less
+            <a
+              href={props.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="m-[1rem] px-[2rem] bg-orange-100 rounded hover:bg-orange-200 text-sky-500"
+            >
+              Go to Link
+            </a>
+          </text>
         ) : (
           "Read More"
         )}
