@@ -9,6 +9,8 @@ import { useState } from "react";
 import DummyData from "../db-en.json";
 
 export default function SearchTrips(props) {
+  const selected = ["Cafe", "Island"];
+
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 

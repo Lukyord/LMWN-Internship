@@ -3,7 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 
 export default function SearchTag(props) {
-  const [tags, setTags] = useState(["Cafe", "Island"]);
+  const [tags, setTags] = useState(props.selected);
   function removeTag(indexToRemove) {
     setTags(tags.filter((_, index) => index !== indexToRemove));
   }
