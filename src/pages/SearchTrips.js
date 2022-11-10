@@ -1,8 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import TripList from "../components/Trips/TripList";
-
-import SearchTag from "../components/ui/SearchTag";
+import useSearchTag from "../components/ui/useSearchTag";
 
 import { useState } from "react";
 
@@ -11,14 +10,16 @@ import DummyData from "../db-en.json";
 export default function SearchTrips(props) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
+  const { render, tags } = useSearchTag();
 
   function handleFilter(event) {
     const searchText = event.target.value;
     setWordEntered(searchText);
 
-    // const newTrips = DummyData.trips.filter((trip) => trip.)
-
-    const newFilter = DummyData.trips.filter((value) => {
+    let filteredTags = DummyData.trips.filter((trip) =>
+      trip.tags.some((tag) => tag.includes(tags))
+    );
+    const newFilter = filteredTags.filter((value) => {
       return value.title.toLowerCase().includes(searchText.toLowerCase());
     });
 
@@ -28,14 +29,8 @@ export default function SearchTrips(props) {
       setFilteredData(newFilter);
     }
 
-    console.log(newFilter);
-    // const f = newFilter.map((subArray) =>
-    //   subArray
-    //     .filter((tag) => tag.toLowerCase().includes(enteredText.toLowerCase()))
-    //     .map((tag) => {
-    //       return tag;
-    //     })
-    // );
+    console.log(tags);
+    console.log(filteredTags);
   }
 
   function clearInput() {
@@ -43,11 +38,16 @@ export default function SearchTrips(props) {
     setWordEntered("");
   }
 
+  function submitHandler(event) {
+    event.preventDefault();
+    console.log(tags);
+  }
+
   return (
     <div className="flex justify-center h-full pt-[3rem] bg-slate-100">
       <div className="flex-col">
-        <SearchTag selected={selected} />
-        <form>
+        {render}
+        <form onSubmit={submitHandler}>
           <div className="text-xl p-[1rem] flex items-center focus-within:text-gray-600 justify-center">
             <input
               type="text"
@@ -71,19 +71,6 @@ export default function SearchTrips(props) {
         </form>
         {filteredData.length !== 0 && (
           <div className="ml-[22rem] mt-[5px] w-[40rem] h-[200px] bg-white shadow-2xl overflow-hidden overflow-y-auto">
-            {/* {filteredData.map((subArray) =>
-              subArray
-                .filter((tag) =>
-                  tag.toLowerCase().includes(enteredText.toLowerCase())
-                )
-                .map((tag) => {
-                  return (
-                    <p className="flex items-center text-black h-[50px] pl-[1rem] hover:bg-slate-100">
-                      {tag}
-                    </p>
-                  );
-                })
-            )} */}
             {filteredData.map((value, key) => {
               return (
                 <a
@@ -102,8 +89,8 @@ export default function SearchTrips(props) {
             })}
           </div>
         )}
-        <div className="h-screen">
-          {filteredData.length === 0 && wordEntered !== 0 ? (
+        <div>
+          {filteredData.length === 0 ? (
             <TripList trips={DummyData.trips} />
           ) : (
             <TripList trips={filteredData} />
