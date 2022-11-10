@@ -2,6 +2,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import TripList from "../components/Trips/TripList";
 
+import SearchTag from "../components/ui/SearchTag";
+
 import { useState } from "react";
 
 import DummyData from "../db-en.json";
@@ -44,6 +46,7 @@ export default function SearchTrips(props) {
   return (
     <div className="flex justify-center h-full pt-[3rem] bg-slate-100">
       <div className="flex-col">
+        <SearchTag selected={selected} />
         <form>
           <div className="text-xl p-[1rem] flex items-center focus-within:text-gray-600 justify-center">
             <input
