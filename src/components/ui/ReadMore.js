@@ -14,7 +14,13 @@ export default function ReadMore(props) {
       {isReadMoreShown ? text + "  " : text.substr(0, 165) + "...  "}
       <button onClick={toggleButton} className="font-semibold text-sky-400">
         {" "}
-        {isReadMoreShown ? "Read Less" : "Read More"}
+        {isReadMoreShown ? (
+          <a href={props.url} target="_blank" rel="noopener noreferrer">
+            Go to Link
+          </a>
+        ) : (
+          "Read More"
+        )}
       </button>
     </div>
   );

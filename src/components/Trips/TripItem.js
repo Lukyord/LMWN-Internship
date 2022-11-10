@@ -22,7 +22,7 @@ export default function TripItem(props) {
               </h3>
             </a>
             <p className="p-[0.5rem]">
-              <ReadMore>{props.description}</ReadMore>
+              <ReadMore url={props.url}>{props.description}</ReadMore>
             </p>
             <div>
               <p>Category: {props.tags}</p>
