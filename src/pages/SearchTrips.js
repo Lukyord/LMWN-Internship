@@ -2,20 +2,37 @@ import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import TripList from "../components/Trips/TripList";
 import useSearchTag from "../components/ui/useSearchTag";
+import axios from "axios";
 
 import { useState, useEffect } from "react";
 
-import DummyData from "../db-en.json";
-
 export default function SearchTrips(props) {
+  const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const { render, tags } = useSearchTag();
 
   useEffect(() => {
-    let filteredTags = DummyData.trips.filter((trip) =>
+    if (tags.length !== 0) {
+      axios
+        .get(`http://localhost:9000/trips?q=${tags}`)
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .get("http://localhost:9000/trips")
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+
+    let filteredTags = data.filter((trip) =>
       trip.tags.some((tag) => tag.includes(tags))
     );
+
     setFilteredData(filteredTags);
   }, [tags]);
 
@@ -23,22 +40,18 @@ export default function SearchTrips(props) {
     const searchText = event.target.value;
     setWordEntered(searchText);
 
-    let filteredTags = DummyData.trips.filter((trip) =>
-      trip.tags.some((tag) => tag.includes(tags.toString()))
+    let filteredTags = data.filter((trip) =>
+      trip.tags.some((tag) => tag.includes(tags))
     );
     const newFilter = filteredTags.filter((value) => {
-      return value.title.toLowerCase().includes(searchText.toLowerCase());
+      return value.title.toLowerCase().includes(wordEntered.toLowerCase());
     });
 
-    if (searchText === "") {
+    if (wordEntered === "") {
       setFilteredData(filteredTags);
     } else {
       setFilteredData(newFilter);
     }
-
-    console.log(filteredTags);
-    console.log(tags.toString());
-    console.log(newFilter);
   }
 
   function clearInput() {
@@ -48,7 +61,6 @@ export default function SearchTrips(props) {
 
   function submitHandler(event) {
     event.preventDefault();
-    console.log(tags);
   }
 
   return (
@@ -98,8 +110,8 @@ export default function SearchTrips(props) {
           </div>
         )}
         <div>
-          {filteredData.length === 0 ? (
-            <TripList trips={DummyData.trips} />
+          {filteredData.length === 0 || tags.length === 0 ? (
+            <TripList trips={data} />
           ) : (
             <TripList trips={filteredData} />
           )}

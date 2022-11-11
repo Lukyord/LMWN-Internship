@@ -48,7 +48,7 @@ export default function useSearchTag(props) {
         </ul>
         <input
           type="text"
-          placeholder="Press enter to add tags"
+          placeholder="Press enter to add tags, unfortunately only one tag works at a time"
           className="flex-1 border-none h-[3rem] text-lg p-[1rem] focus:outline-none"
           onKeyUp={addTags}
         />
