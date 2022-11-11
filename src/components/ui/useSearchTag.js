@@ -14,8 +14,12 @@ export default function useSearchTag(props) {
   }
 
   function addTags(event) {
-    if (event.key === "Enter" && event.target.value !== "") {
-      setTags([...tags, event.target.value]);
+    const enteredTag = event.target.value;
+    if (event.key === "Enter" && enteredTag !== "") {
+      setTags([
+        ...tags,
+        enteredTag.charAt(0).toUpperCase() + enteredTag.slice(1),
+      ]);
       event.target.value = "";
     }
   }
@@ -44,7 +48,7 @@ export default function useSearchTag(props) {
         </ul>
         <input
           type="text"
-          placeholder="Press enter to add tags"
+          placeholder="Press enter to add tags, unfortunately only one tag works at a time"
           className="flex-1 border-none h-[3rem] text-lg p-[1rem] focus:outline-none"
           onKeyUp={addTags}
         />
